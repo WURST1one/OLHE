@@ -40,12 +40,8 @@
 <body>
 
   <div class="content">
-    <h1>Charada 9</h1>
-    <p class="charada">Ele é careca, mas seu cérebro é cheio de banco de dados,<br>
-    Sempre organizando tudo, de forma impecável e dedicada.<br>
-    Nas tabelas e registros, encontra prazer,<br>
-    Com suas consultas, sabe tudo o que fazer.<br>
-    Quem é ele?</p>
+    <h1>Charada 10</h1>
+    <p class="charada">Quem Sou Eu? Dica: Sou o seu melhor amigo!</p>
     <p class="charada">Digite sua resposta na URL após "?" (Exemplo: www.seusite.com?resposta=suaresposta) e pressione Enter.</p>
   </div>
 
@@ -68,11 +64,13 @@
 
     function verificarResposta() {
       const resposta = getUrlParameter('resposta');
-      if (resposta && resposta.toLowerCase() === "reginaldo") {
-        alert("Resposta correta! Vamos para a próxima.");
-        window.location.href = "index10.html"; // Redireciona para index10.html
-      } else if (resposta && resposta !== "") {
-        alert("Resposta incorreta. Tente novamente digitando a resposta correta na URL.");
+      if (resposta) {
+        if (resposta.toLowerCase() === "seu madruga") {
+          alert("Resposta correta! Vamos para a próxima.");
+          window.location.href = "index6.html"; // Redireciona para a próxima página
+        } else {
+          alert("Resposta incorreta. Como errou isso? (Obs: tente Seu Madruga!).");
+        }
       }
     }
   </script>
