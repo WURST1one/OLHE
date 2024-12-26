@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charada 5</title>
+  <title>Charada 8</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -40,11 +40,11 @@
 <body>
 
   <div class="content">
-    <h1>Charada 5</h1>
-    <p class="charada">Sou amigo leal, com orelhas a balançar,<br>
-    Corro atrás de bolas e adoro brincar.<br>
-    Com meu nome fofinho, você pode me chamar,<br>
-    Quem sou eu, esse cãozinho a alegrar?</p>
+    <h1>Charada 8</h1>
+    <p class="charada">Sou tio do garoto de andar torto,<br>
+    Sempre pronto para contar histórias e fazer piadas.<br>
+    Seu nome é diferente, mas a diversão que ele traz é sempre a mesma.<br>
+    Quem é ele?</p>
     <p class="charada">Digite sua resposta na URL após "?" (Exemplo: www.seusite.com?resposta=suaresposta) e pressione Enter.</p>
   </div>
 
@@ -54,7 +54,7 @@
       const currentUrl = window.location.href;
       if (!currentUrl.includes('?resposta=')) {
         const baseUrl = currentUrl.split('?')[0]; // Remove qualquer parâmetro existente
-        window.location.href = `${baseUrl}?resposta=`;
+        window.location.href = `${baseUrl}?resposta=`; 
       } else {
         verificarResposta(); // Verifica automaticamente ao carregar a página
       }
@@ -67,9 +67,9 @@
 
     function verificarResposta() {
       const resposta = getUrlParameter('resposta');
-      if (resposta && resposta.toLowerCase() === "flocos") {
+      if (resposta && resposta.toLowerCase() === "erick dias") {
         alert("Resposta correta! Vamos para a próxima.");
-        window.location.href = "index66.html"; // Redireciona para index6.html
+        window.location.href = "index9.html"; // Redireciona para index9.html
       } else if (resposta && resposta !== "") {
         alert("Resposta incorreta. Tente novamente digitando a resposta correta na URL.");
       }
