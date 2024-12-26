@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charada 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .content {
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .charada {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Charada 4</h1>
+    <p class="charada">Sempre busca o topo, onde poucos vão,<br>
+    Em cima da caixa d'água, posa com empolgação.<br>
+    Gosta de fotos e de se destacar,<br>
+    Quem é esse cara que adora fotografar?</p>
+    <p class="charada">Digite sua resposta na URL após "?" (Exemplo: www.seusite.com?resposta=suaresposta) e pressione Enter.</p>
+  </div>
+
+  <script>
+    // Redireciona automaticamente para "?resposta=" se não estiver presente na URL
+    window.onload = function() {
+      const currentUrl = window.location.href;
+      if (!currentUrl.includes('?resposta=')) {
+        const baseUrl = currentUrl.split('?')[0]; // Remove qualquer parâmetro existente
+        window.location.href = `${baseUrl}?resposta=`; 
+      } else {
+        verificarResposta(); // Verifica automaticamente ao carregar a página
+      }
+    };
+
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function verificarResposta() {
+      const resposta = getUrlParameter('resposta');
+      if (resposta && resposta.toLowerCase() === "dom paiva") {
+        alert("Resposta correta! Vamos para a próxima.");
+        window.location.href = "index5.html"; // Redireciona para o index5.html
+      } else if (resposta && resposta !== "") {
+        alert("Resposta incorreta. Tente novamente digitando a resposta correta na URL.");
+      }
+    }
+  </script>
+
+</body>
+</html>

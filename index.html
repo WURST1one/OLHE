@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boa Noite, Maria Luísa!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .content {
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 20px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      transition: transform 0.2s;
+    }
+
+    #sim {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #nao {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #nao:hover {
+      transform: translateX(10px);
+    }
+
+    #nao.movido {
+      transform: translateX(100px);
+      pointer-events: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .charada {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Boa noite, Maria Luísa! (Suponho que seja à noite, mas caso seja em outro horário, boa tarde ou bom dia!) Você está afim de jogar?</h1>
+    <button id="sim">Sim</button>
+    <button id="nao">Não</button>
+
+    <div id="mensagem" class="hidden">
+      <p>Que legal! As regras são simples: vou te passar uma charada, mas pode ficar tranquila, pois as charadas são sobre as nossas piadinhas internas. Então, vai ser fácil!</p>
+      <button id="avancar">Avançar</button>
+    </div>
+
+    <div id="charada" class="hidden">
+      <p class="charada">Sou conhecido por ser falante e repetitivo, Minha personalidade é bem expressiva e ativa. Com um nome que lembra uma ave de bico forte, Quem sou eu, que sempre tem algo a mais em cada sorte?</p>
+      <p class="charada">Digite sua resposta na URL após "?" (Exemplo: www.seusite.com?resposta=suaresposta) e pressione Enter.</p>
+    </div>
+  </div>
+
+  <script>
+    // Redireciona automaticamente para "?resposta=" se não estiver presente na URL
+    window.onload = function() {
+      const currentUrl = window.location.href;
+      if (!currentUrl.includes('?resposta=')) {
+        const baseUrl = currentUrl.split('?')[0]; // Remove qualquer parâmetro existente
+        window.location.href = `${baseUrl}?resposta=`;
+      } else {
+        verificarResposta(); // Verifica automaticamente ao carregar a página
+      }
+    };
+
+    const botaoSim = document.getElementById("sim");
+    const botaoNao = document.getElementById("nao");
+    const mensagem = document.getElementById("mensagem");
+    const charada = document.getElementById("charada");
+    const avancar = document.getElementById("avancar");
+
+    botaoNao.addEventListener("mouseover", () => {
+      botaoNao.classList.add("movido");
+    });
+
+    botaoNao.addEventListener("mouseleave", () => {
+      botaoNao.classList.remove("movido");
+    });
+
+    botaoSim.addEventListener("click", () => {
+      mensagem.classList.remove("hidden");
+    });
+
+    avancar.addEventListener("click", () => {
+      mensagem.classList.add("hidden");
+      charada.classList.remove("hidden");
+    });
+
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function verificarResposta() {
+      const resposta = getUrlParameter('resposta');
+      if (resposta && resposta.toLowerCase() === "cacatua") {
+        alert("Resposta correta! Vamos para a próxima.");
+        window.location.href = "index2.html"; // Redireciona para a próxima página
+      } else if (resposta && resposta !== "") {
+        alert("Resposta incorreta. Tente novamente digitando a resposta correta na URL.");
+      }
+    }
+  </script>
+
+</body>
+</html>
